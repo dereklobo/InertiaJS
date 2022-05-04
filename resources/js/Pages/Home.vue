@@ -31,4 +31,4 @@ export default {
 
 <style>
 
-</style>template
+</style>
