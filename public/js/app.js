@@ -2213,10 +2213,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Nav: _Nav_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  computed: {
+    username: function username() {
+      return this.$page.props.auth.user.username;
+    }
   }
 });
 
@@ -9428,7 +9440,21 @@ var render = function () {
       _c(
         "header",
         { staticClass: "flex justify-between" },
-        [_c("h1", [_vm._v("My App")]), _vm._v(" "), _c("Nav")],
+        [
+          _c("div", { staticClass: "flex items-center" }, [
+            _c("h1", { staticClass: "font-bold text-lg" }, [_vm._v("My App")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-sm ml-4" }, [
+              _vm._v(
+                "\n                Welcome back, " +
+                  _vm._s(_vm.username) +
+                  "!\n            "
+              ),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("Nav"),
+        ],
         1
       ),
     ]),
