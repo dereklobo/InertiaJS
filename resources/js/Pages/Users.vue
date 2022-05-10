@@ -1,6 +1,6 @@
 <template>
 
-<Layout>
+<div>
     <h1 class="text-2xl font-bold"> Users</h1>
     <div class="container">
       <h1 class="text-4xl font-bold ">Welcome, {{name}}</h1>
@@ -13,7 +13,7 @@
             <Link href="/users" class="text-blue-500 hover:underline" preserve-scroll> Refresh</Link>
         </div>
     </div>
-  </Layout>
+  </div>
 
  
 </template>
@@ -24,14 +24,19 @@ import Nav from "../Shared/Nav.vue";
 export default {
     components: {
         Nav,
-        Layout
     },
     props: {
         time: {
             type: String,
             required: true
-        }
-    }
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        initial_credits: Number
+    },
+    layout: Layout
 
 }
 </script>

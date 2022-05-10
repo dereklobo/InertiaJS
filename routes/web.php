@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::get('/users', function () {
     
     return Inertia::render('Users', [
+        'name' => 'John Doe',
+        'initial_credits' => 10,  
         'time' => now()->toTimeString(),
     ]);
 });
