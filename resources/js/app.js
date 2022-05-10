@@ -17,6 +17,8 @@ createInertiaApp({
       render: h => h(App, props),
     }).$mount(el)
   },
+
+  title: title => title + ' - My App',
 })
 
 InertiaProgress.init({

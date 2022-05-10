@@ -1,6 +1,9 @@
 <template>
 
 <div>
+    <Head>
+        <title>Users</title>
+    </Head>
     <h1 class="text-2xl font-bold"> Users</h1>
     <div class="container">
       <h1 class="text-4xl font-bold ">Welcome, {{name}}</h1>
@@ -18,12 +21,10 @@
  
 </template>
 
-<script>
-import Nav from "../Shared/Nav.vue";
+<script setup>
+import { Head } from '@inertiajs/inertia-vue';
 export default {
-    components: {
-        Nav,
-    },
+    
     props: {
         time: {
             type: String,
