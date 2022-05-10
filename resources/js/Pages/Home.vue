@@ -15,7 +15,6 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/inertia-vue';
 
 export default {
   props: {
