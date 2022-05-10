@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
 
 export default {
   props: {
@@ -25,7 +24,6 @@ export default {
       required: true
     }
   },
-  layout: Layout
 
 }
 </script>
