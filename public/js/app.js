@@ -2114,6 +2114,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2126,9 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
-  components: {
-    Layout: _Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  layout: _Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -2170,15 +2169,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    Nav: _Shared_Nav_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Layout: _Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Nav: _Shared_Nav_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
     time: {
       type: String,
       required: true
-    }
-  }
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    initial_credits: Number
+  },
+  layout: _Shared_Layout_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -9339,7 +9343,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("Layout", [
+  return _c("div", [
     _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Home")]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
@@ -9374,7 +9378,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("Layout", [
+  return _c("div", [
     _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Users")]),
     _vm._v(" "),
     _c("div", { staticClass: "container" }, [
