@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Link class="text-blue-500 hover:underline" :class="{'font-bold underline': active }" :href="href" >
+    <Link class="text-black hover:underline" :class="{'font-bold underline': active }" :href="href" >
         <slot/>
     </Link> 
 </div>
