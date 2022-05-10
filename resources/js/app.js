@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { createInertiaApp, Link } from '@inertiajs/inertia-vue';
+import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue';
 import { InertiaProgress } from '@inertiajs/progress'
 import Layout from './Shared/Layout.vue'
 
@@ -12,6 +12,7 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     Vue.use(plugin)
     .component('Link', Link)
+    .component('Head', Head)
 
     new Vue({
       render: h => h(App, props),
