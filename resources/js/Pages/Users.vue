@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Layout from "../Shared/Layout.vue";
 import Nav from "../Shared/Nav.vue";
 export default {
     components: {
@@ -36,7 +35,6 @@ export default {
         },
         initial_credits: Number
     },
-    layout: Layout
 
 }
 </script>
