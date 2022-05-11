@@ -33,18 +33,7 @@
         </div>
 
         <!-- Pagination -->
-        <div class="mt-6">
-            <Component 
-                :is="link.url ? 'Link' : 'span' " 
-                v-for="link in users.links" 
-                :key="link.id" 
-                :href="link.url" 
-                v-html="link.label"
-                class="px-1"
-                :class="link.url ? '' : 'text-gray-500'"
-            >
-            </Component>
-        </div>
+       <Pagination :links="users.links" class="mt-6" />
 
     </div>
     <div>
@@ -59,8 +48,12 @@
 </template>
 
 <script setup>
+import Pagination from '../Shared/Pagination';
+
 export default {
-    
+    components: {
+        Pagination
+    },
     props: {
         time: {
             type: String,
