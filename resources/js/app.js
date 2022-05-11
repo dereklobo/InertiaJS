@@ -2,6 +2,7 @@ import Vue from 'vue'
 import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue';
 import { InertiaProgress } from '@inertiajs/progress'
 import Layout from './Shared/Layout.vue'
+import VueCompositionAPI from '@vue/composition-api'
 
 createInertiaApp({
   resolve: name => {
@@ -11,6 +12,7 @@ createInertiaApp({
   },
   setup({ el, App, props, plugin }) {
     Vue.use(plugin)
+    .use(VueCompositionAPI)
     .component('Link', Link)
     .component('Head', Head)
 
