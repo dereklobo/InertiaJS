@@ -81,6 +81,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 // import  { reactive } from 'vue';
 // let form = reactive({
 //     name: '',
@@ -123,6 +127,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Shared/Pagination.vue */ "./resources/js/Shared/Pagination.vue");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+//
+//
+//
+//
 //
 //
 //
@@ -1003,6 +1011,7 @@ var render = function () {
           },
         },
         [
+          _vm._v("\n    " + _vm._s(_vm.errors) + "\n        "),
           _c("div", { staticClass: "mb-6" }, [
             _c(
               "label",
@@ -1024,7 +1033,7 @@ var render = function () {
                 },
               ],
               staticClass: "border border-gray-400 p-2 w-full",
-              attrs: { type: "text", name: "name", id: "name", required: "" },
+              attrs: { type: "text", name: "name", id: "name" },
               domProps: { value: _vm.form.name },
               on: {
                 input: function ($event) {
@@ -1035,6 +1044,15 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.$page.props.errors.name
+              ? _c("div", {
+                  staticClass: "text-red-500 text-xs mt-1",
+                  domProps: {
+                    textContent: _vm._s(_vm.$page.props.errors.name),
+                  },
+                })
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "mb-6" }, [
@@ -1058,12 +1076,7 @@ var render = function () {
                 },
               ],
               staticClass: "border border-gray-400 p-2 w-full",
-              attrs: {
-                type: "email",
-                name: "email",
-                id: "email",
-                required: "",
-              },
+              attrs: { type: "email", name: "email", id: "email" },
               domProps: { value: _vm.form.email },
               on: {
                 input: function ($event) {
@@ -1074,6 +1087,15 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.$page.props.errors.email
+              ? _c("div", {
+                  staticClass: "text-red-500 text-xs mt-1",
+                  domProps: {
+                    textContent: _vm._s(_vm.$page.props.errors.email),
+                  },
+                })
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "mb-6" }, [
@@ -1097,12 +1119,7 @@ var render = function () {
                 },
               ],
               staticClass: "border border-gray-400 p-2 w-full",
-              attrs: {
-                type: "password",
-                name: "password",
-                id: "password",
-                required: "",
-              },
+              attrs: { type: "password", name: "password", id: "password" },
               domProps: { value: _vm.form.password },
               on: {
                 input: function ($event) {
@@ -1113,6 +1130,15 @@ var render = function () {
                 },
               },
             }),
+            _vm._v(" "),
+            _vm.$page.props.errors.password
+              ? _c("div", {
+                  staticClass: "text-red-500 text-xs mt-1",
+                  domProps: {
+                    textContent: _vm._s(_vm.$page.props.errors.password),
+                  },
+                })
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _vm._m(0),
@@ -1172,7 +1198,25 @@ var render = function () {
         { staticClass: "container" },
         [
           _c("div", { staticClass: "flex justify-between mb-6" }, [
-            _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Users")]),
+            _c(
+              "div",
+              { staticClass: "flex items-center" },
+              [
+                _c("h1", { staticClass: "text-2xl font-bold" }, [
+                  _vm._v(" Users"),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "Link",
+                  {
+                    staticClass: "text-blue-500 text-sm ml-3",
+                    attrs: { href: "/users/create" },
+                  },
+                  [_vm._v("New User")]
+                ),
+              ],
+              1
+            ),
             _vm._v(" "),
             _c("input", {
               directives: [
