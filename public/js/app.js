@@ -76,16 +76,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     time: {
       type: String,
       required: true
     },
-    name: {
-      type: String,
-      required: true
-    },
+    users: Object,
     initial_credits: Number
   }
 });
@@ -689,17 +723,97 @@ var render = function () {
       _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Users")]),
       _vm._v(" "),
       _c("div", { staticClass: "container" }, [
-        _c("h1", { staticClass: "text-4xl font-bold " }, [
-          _vm._v("Welcome, " + _vm._s(_vm.name)),
-        ]),
+        _c("h1", { staticClass: "text-4xl font-bold " }, [_vm._v("Welcome,")]),
         _vm._v(" "),
         _c("p", [_vm._v("Credits: " + _vm._s(_vm.initial_credits))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "shadow overflow-hidden border-b border-gray-200 sm:rounded-lg",
+          },
+          [
+            _c(
+              "table",
+              { staticClass: "min-w-full divide-y divide-gray-200" },
+              [
+                _c(
+                  "tbody",
+                  { staticClass: "bg-white divide-y divide-gray-200" },
+                  _vm._l(_vm.users.data, function (user) {
+                    return _c("tr", { key: user.id }, [
+                      _c("td", { staticClass: "px-6 py-4 whitespace-nowrap" }, [
+                        _c("div", { staticClass: "flex items-center" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "text-sm font-medium text-grey-900",
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(user.name) +
+                                  "\n                                "
+                              ),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass:
+                            "px-6 py-6 whitespace-nowrap text-right text-sm font-medium",
+                        },
+                        [
+                          _c(
+                            "Link",
+                            {
+                              staticClass:
+                                "text-indigo-600 hover:text-indigo-900",
+                              attrs: { href: "/users/" + user.id + "/edit" },
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Edit\n                            "
+                              ),
+                            ]
+                          ),
+                        ],
+                        1
+                      ),
+                    ])
+                  }),
+                  0
+                ),
+              ]
+            ),
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "mt-6" },
+          _vm._l(_vm.users.links, function (link) {
+            return _c(link.url ? "Link" : "span", {
+              key: link.id,
+              tag: "Component",
+              staticClass: "px-1",
+              class: link.url ? "" : "text-gray-500",
+              attrs: { href: link.url },
+              domProps: { innerHTML: _vm._s(link.label) },
+            })
+          }),
+          1
+        ),
       ]),
       _vm._v(" "),
       _c("div", [
         _c(
           "div",
-          { staticStyle: { "margin-top": "500px" } },
+          { staticStyle: { "margin-top": "300px" } },
           [
             _c("p", [_vm._v("The current time is " + _vm._s(_vm.time))]),
             _vm._v(" "),
