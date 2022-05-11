@@ -48,8 +48,8 @@
  
 </template>
 
-<script setup>
-import Pagination from '../Shared/Pagination';
+<script>
+import Pagination from '../../Shared/Pagination.vue';
 import { Inertia } from '@inertiajs/inertia';
 
 
@@ -68,7 +68,6 @@ export default {
     watch: {
         search: {
             handler(newValue) {
-                console.log(newValue);
                 Inertia.get('/users', {search: newValue}, {preserveState: true, replace: true});
                 
             },
@@ -76,7 +75,9 @@ export default {
     },
     mounted() {
         let search =  Object.assign(this.filters).search.search;
-        this.$refs.search.value = search;
+        if (search) {
+            this.$refs.search.value = search;
+        }
     },
     data() {
        
