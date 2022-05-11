@@ -54,6 +54,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Shared_Pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Shared/Pagination */ "./resources/js/Shared/Pagination.vue");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+//
 //
 //
 //
@@ -104,6 +106,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Pagination: _Shared_Pagination__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -114,7 +117,29 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     users: Object,
-    initial_credits: Number
+    filters: Object
+  },
+  watch: {
+    search: {
+      handler: function handler(newValue) {
+        console.log(newValue);
+        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get('/users', {
+          search: newValue
+        }, {
+          preserveState: true,
+          replace: true
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    var search = Object.assign(this.filters).search.search;
+    this.$refs.search.value = search;
+  },
+  data: function data() {
+    return {
+      search: ''
+    };
   }
 });
 
@@ -820,17 +845,36 @@ var render = function () {
     [
       _c("Head", [_c("title", [_vm._v("Users")])]),
       _vm._v(" "),
-      _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Users")]),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "container" },
         [
-          _c("h1", { staticClass: "text-4xl font-bold " }, [
-            _vm._v("Welcome,"),
+          _c("div", { staticClass: "flex justify-between mb-6" }, [
+            _c("h1", { staticClass: "text-2xl font-bold" }, [_vm._v(" Users")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search",
+                },
+              ],
+              ref: "search",
+              staticClass: "border px-2 rounded-lg",
+              attrs: { type: "text", placeholder: "Search ..." },
+              domProps: { value: _vm.search },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                },
+              },
+            }),
           ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Credits: " + _vm._s(_vm.initial_credits))]),
           _vm._v(" "),
           _c(
             "div",
