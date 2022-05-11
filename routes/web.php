@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
 use Inertia\Inertia;
-use SebastianBergmann\Environment\Console;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,12 @@ Route::get('/', function () {
 Route::get('/users', function () {
     
     return Inertia::render('Users', [
-        'name' => 'John Doe',
+        'users' => User::paginate(10),
+        
+        // ->map(fn($user) => [
+        //         'id' => $user->id,
+        //         'name' => $user->name,
+        //     ]),
         'initial_credits' => 10,  
         'time' => now()->toTimeString(),
     ]);
