@@ -91,6 +91,11 @@ __webpack_require__.r(__webpack_exports__);
 //     email: '',
 //     password: ''
 // });
+ // this.$intertia.form({
+//     name: '',
+//     email: '',
+//     password: ''
+// })
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
@@ -101,13 +106,22 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         email: '',
         password: ''
-      }
+      },
+      processing: false
     };
   },
   methods: {
     submit: function submit() {
-      console.log(this.form);
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/users', this.form);
+      var _this = this;
+
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post('/users', this.form, {
+        onStart: function onStart() {
+          _this.processing = true;
+        },
+        onFinish: function onFinish() {
+          _this.processing = false;
+        }
+      });
     }
   }
 });
@@ -127,6 +141,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Shared_Pagination_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Shared/Pagination.vue */ "./resources/js/Shared/Pagination.vue");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -181,6 +197,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -198,12 +215,7 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     search: {
       handler: function handler(newValue) {
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get('/users', {
-          search: newValue
-        }, {
-          preserveState: true,
-          replace: true
-        });
+        this.callSearch(newValue);
       }
     }
   },
@@ -218,6 +230,16 @@ __webpack_require__.r(__webpack_exports__);
     return {
       search: ''
     };
+  },
+  methods: {
+    callSearch: lodash__WEBPACK_IMPORTED_MODULE_2___default().debounce(function (newValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get('/users', {
+        search: newValue
+      }, {
+        preserveState: true,
+        replace: true
+      });
+    }, 500)
   }
 });
 
@@ -1141,31 +1163,24 @@ var render = function () {
               : _vm._e(),
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("div", { staticClass: "mb-6" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500",
+                attrs: { type: "submit", disabled: _vm.processing },
+              },
+              [_vm._v(" Submit")]
+            ),
+          ]),
         ]
       ),
     ],
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-6" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500",
-          attrs: { type: "submit" },
-        },
-        [_vm._v(" Submit")]
-      ),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

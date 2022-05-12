@@ -23,13 +23,13 @@
                 <div v-if="$page.props.errors.password" v-text="$page.props.errors.password" class="text-red-500 text-xs mt-1"></div>
             </div>
             <div class="mb-6">
-                <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500"> Submit</button>
+                <button type="submit" class="bg-blue-400 text-white rounded py-2 px-4 hover:bg-blue-500" :disabled="processing"> Submit</button>
             </div>
         </form>
     </div>
 </template>
 
-<script>
+<script >
 
 // import  { reactive } from 'vue';
 
@@ -40,6 +40,13 @@
 // });
 
 import { Inertia } from '@inertiajs/inertia';
+
+// this.$intertia.form({
+//     name: '',
+//     email: '',
+//     password: ''
+// })
+
 export default {
     components: {
     },
@@ -52,12 +59,19 @@ export default {
                 email: '',
                 password: ''
             },
+            processing: false,
         }
     },
     methods: {
         submit() {
-            console.log(this.form);
-            Inertia.post('/users', this.form);
+            Inertia.post('/users', this.form, {
+                onStart: () => {
+                    this.processing = true;
+                },
+                onFinish: () => {
+                    this.processing = false;
+                }
+            });
         }
     }
 }
