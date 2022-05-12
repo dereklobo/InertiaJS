@@ -2,6 +2,7 @@
 
 use App\Models\User;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
@@ -40,6 +41,9 @@ Route::middleware('auth')->group(function () {
                 ->through(fn($user) => [
                     'id' => $user->id,
                     'name' => $user->name,
+                    'can' => [
+                        'edit' => Auth::user()->can('update', User::class),
+                    ],
                 ]),
                 'filters' => [
                     'search' => Request::only(['search']),
@@ -47,14 +51,14 @@ Route::middleware('auth')->group(function () {
             'initial_credits' => 10,  
             'time' => now()->toTimeString(),
             'can' => [
-                'createUser' => true,
+                'createUser' => Auth::user()->can('create', User::class),
             ],
         ]);
     });
 
     Route::get('/users/create', function () {
         return Inertia::render('Users/Create');
-    });
+    })->middleware('can:create,App\Models\User');
 
     Route::post('/users', function () {
 
