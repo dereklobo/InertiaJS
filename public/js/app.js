@@ -100,10 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    name: {
-      type: String,
-      required: true
-    },
     initial_credits: {
       type: Number,
       required: true
@@ -285,7 +281,8 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     users: Object,
-    filters: Object
+    filters: Object,
+    can: Object
   },
   watch: {
     search: {
@@ -428,7 +425,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     active: Boolean,
     href: String,
-    method: String
+    method: String,
+    as: String
   }
 });
 
@@ -1536,14 +1534,16 @@ var render = function () {
                   _vm._v(" Users"),
                 ]),
                 _vm._v(" "),
-                _c(
-                  "Link",
-                  {
-                    staticClass: "text-blue-500 text-sm ml-3",
-                    attrs: { href: "/users/create" },
-                  },
-                  [_vm._v("New User")]
-                ),
+                _vm.can.createUser
+                  ? _c(
+                      "Link",
+                      {
+                        staticClass: "text-blue-500 text-sm ml-3",
+                        attrs: { href: "/users/create" },
+                      },
+                      [_vm._v("New User")]
+                    )
+                  : _vm._e(),
               ],
               1
             ),
@@ -1832,7 +1832,7 @@ var render = function () {
         {
           staticClass: "text-black hover:underline",
           class: { "font-bold underline": _vm.active },
-          attrs: { href: _vm.href, method: _vm.method },
+          attrs: { href: _vm.href, method: _vm.method, as: _vm.as },
         },
         [_vm._t("default")],
         2

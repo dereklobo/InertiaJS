@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function () {
                 ],
             'initial_credits' => 10,  
             'time' => now()->toTimeString(),
+            'can' => [
+                'createUser' => true,
+            ],
         ]);
     });
 
