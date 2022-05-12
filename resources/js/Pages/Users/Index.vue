@@ -55,6 +55,7 @@
 <script>
 import Pagination from '../../Shared/Pagination.vue';
 import { Inertia } from '@inertiajs/inertia';
+import _ from 'lodash';
 
 
 export default {
@@ -72,11 +73,11 @@ export default {
     watch: {
         search: {
             handler(newValue) {
-                Inertia.get('/users', {search: newValue}, {preserveState: true, replace: true});
-                
+                this.callSearch(newValue);
             },
         }
     },
+   
     mounted() {
         let search =  Object.assign(this.filters).search.search;
         if (search) {
@@ -89,6 +90,11 @@ export default {
             search: '',
         }
     },
+    methods: {
+        callSearch:_.debounce(function (newValue) {
+            Inertia.get('/users', {search: newValue}, {preserveState: true, replace: true});
+        }, 500)
+    }
 
 }
 </script>
