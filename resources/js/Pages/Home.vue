@@ -18,10 +18,6 @@
 
 export default {
   props: {
-    name: {
-      type: String,
-      required: true
-    },
     initial_credits: {
       type: Number,
       required: true
@@ -29,8 +25,8 @@ export default {
   },
   computed: {
     username() {
-      return this.$page.props.auth.user.username;
-    }
+            return this.$page.props.auth.user.username;
+        }
   }
 
 }

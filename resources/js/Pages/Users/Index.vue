@@ -9,7 +9,7 @@
     <div class="flex justify-between mb-6">
     <div class="flex items-center">
         <h1 class="text-2xl font-bold"> Users</h1>
-        <Link href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
+        <Link v-if="can.createUser" href="/users/create" class="text-blue-500 text-sm ml-3">New User</Link>
     </div>
 
         <input type="text" v-model="search" placeholder="Search ..." class="border px-2 rounded-lg" ref="search"/>
@@ -69,6 +69,7 @@ export default {
         },
         users: Object,
         filters: Object,
+        can: Object,
     },
     watch: {
         search: {
