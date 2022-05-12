@@ -1618,19 +1618,23 @@ var render = function () {
                               "px-6 py-6 whitespace-nowrap text-right text-sm font-medium",
                           },
                           [
-                            _c(
-                              "Link",
-                              {
-                                staticClass:
-                                  "text-indigo-600 hover:text-indigo-900",
-                                attrs: { href: "/users/" + user.id + "/edit" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                Edit\n                            "
-                                ),
-                              ]
-                            ),
+                            user.can.edit
+                              ? _c(
+                                  "Link",
+                                  {
+                                    staticClass:
+                                      "text-indigo-600 hover:text-indigo-900",
+                                    attrs: {
+                                      href: "/users/" + user.id + "/edit",
+                                    },
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                Edit\n                            "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
                           ],
                           1
                         ),
