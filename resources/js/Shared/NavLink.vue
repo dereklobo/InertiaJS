@@ -1,6 +1,6 @@
 <template>
 <div>
-    <Link class="text-black hover:underline" :class="{'font-bold underline': active }" :href="href" >
+    <Link class="text-black hover:underline" :class="{'font-bold underline': active }" :href="href" :method="method" >
         <slot/>
     </Link> 
 </div>
@@ -14,6 +14,7 @@ export default {
     props: {
         active:Boolean,
         href:String,
+        method:String,
     }
         
 }
